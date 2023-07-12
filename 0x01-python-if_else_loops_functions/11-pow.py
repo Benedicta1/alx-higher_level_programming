@@ -2,5 +2,5 @@
 #11-pow.py
 
 def pow(a, b):
-"""return a to the power of b"""
-return (a ** b)
+     """This function returns a to the power of b."""
+     return (a** b)
