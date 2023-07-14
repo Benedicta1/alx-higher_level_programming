@@ -1,11 +1,17 @@
-#!/usr/bin/python3
+#!/usr/bin/python
+def add_arg(argv):
+    a = len(argv) - 1
+    if a == 0:
+        print("{:d}" .format(a))
+        return
+    else:
+        b = 1
+        add = 0
+        while b<=a:
+            add += int(argv[b])
+            b +=1
+            print("{:d}" .format(add))
 
-if __name__ == "__main__":
-    """Print the result of addition of all arguments."""
-    import sys
-
-    total = 0
-    for a in range(len(sys.argv) - 1):
-        total += int(sys.argv[a + 1])
-    print("{}".format(total))
-
+            if __name__ == "__main__":
+                import sys
+                add_arg(sys.argv
