@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-__import__sys.stdout.write("#pythoniscool")
+import python_for_me
