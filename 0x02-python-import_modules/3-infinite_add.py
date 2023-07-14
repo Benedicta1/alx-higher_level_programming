@@ -7,11 +7,11 @@ def add_arg(argv):
     else:
         b = 1
         add = 0
-        while b<=a:
+        while b <= a:
             add += int(argv[b])
             b +=1
             print("{:d}" .format(add))
 
             if __name__ == "__main__":
                 import sys
-                add_arg(sys.argv
+                add_arg(sys.argv)
