@@ -1,53 +1,95 @@
 #!/usr/bin/python3
-"""writing a class called node"""
+"""Writing an empty class"""
 
 
 class Square:
-    """this is a class defined for square"""
+    """Class defined for square generation.
+
+    Args:
+        size (int): length of one side of square
+
+    Attributes:
+        __size (int): length of one side of square
+
+    """
+
     def __init__(self, size=0):
-        if type(size) != int and type(size) != float:
-            raise TypeError("size must be a number")
-        elif size < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = size
+        self.__size = size
 
     @property
     def size(self):
+        """__size getter, setter with same method name
+
+        Returns:
+            __size (int): length of one side, squared
+
+        """
         return self.__size
 
     @size.setter
     def size(self, value):
-        if type(value) != int and type(value) != float:
-            raise TypeError("size must be a number")
-        elif value < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
+        """Args:
+            value (int): length of one side of square
+
+        Attributes:
+            __size (int): length of one side of square
+
+        Raises:
+            TypeError: if value is not an integer
+            ValueError: if value is less than 0
+
+        """
+        if type(value) is not int:
+            raise TypeError('size must be an integer')
+        if value < 0:
+            raise ValueError('size must be >= 0')
+        self.__size = value
 
     def area(self):
-        return self.__size * self.__size
+        """Calulates area of square.
 
-    def __eq__(self, other):
-        """check if equal to another square"""
-        return(self.area() == other.area())
+        Attributes:
+            __size (int): length of one side of square
+
+        Returns:
+            area (int): length of one side, squared
+
+        """
+        area = self.__size * self.__size
+        return area
 
     def __lt__(self, other):
-        """check if less than other square"""
-        return(self.area() < other.area())
+        """Define comparisons of class object for less than.
+        Taken from PEP 207 -- Rich Comparisons
+        """
+        return self.area() < other.area()
 
     def __le__(self, other):
-        """check if less than or equal to other square"""
-        return(self.area() <= other.area())
+        """Define comparisons of class object for less than/equal to.
+        Taken from PEP 207 -- Rich Comparisons
+        """
+        return self.area() <= other.area()
+
+    def __eq__(self, other):
+        """Define comparisons of class object for equal to.
+        Taken from PEP 207 -- Rich Comparisons
+        """
+        return self.area() == other.area()
 
     def __ne__(self, other):
-        """check if not equal to another suqare"""
-        return(self.area() != other.area())
+        """Define comparisons of class object for not equal to.
+        Taken from PEP 207 -- Rich Comparisons
+        """
+        return self.area() != other.area()
 
     def __gt__(self, other):
-        """check if greater than another square"""
-        return(self.area() > other.area())
+        """Define comparisons of class object for greater than.
+        Taken from PEP 207 -- Rich Comparisons
+        """
+        return self.area() > other.area()
 
     def __ge__(self, other):
-        """check if greater than or equal to another square"""
-        return(self.area() >= other.area())
+        """Define comparisons of class object for greater than/equal to.
+        Taken from PEP 207 -- Rich Comparisons
+        """
+        return self.area() >= other.area()
