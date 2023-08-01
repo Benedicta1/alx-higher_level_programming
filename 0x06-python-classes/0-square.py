@@ -1,4 +1,5 @@
 #!/usr/bin/python3
-"Writing an empty class"
+"""writing an empty class"""
+
 class Square:
     pass
