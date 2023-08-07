@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Defining an empty class rectangle"""
-
+"""This defines a class rectangle.
+"""
 
 
 class Rectangle:
-    """class definds a rectangle"""
-
+    """This is me initializing a class called Rectangle.
+    """
     pass
