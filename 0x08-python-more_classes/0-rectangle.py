@@ -4,6 +4,6 @@
 
 
 class Rectangle:
-    """This is me initializing a class called Rectangle.
+    """The rectangle class.
     """
     pass
