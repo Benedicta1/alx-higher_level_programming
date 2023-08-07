@@ -1,11 +1,9 @@
 #!/usr/bin/python3
+"""Defining an empty class rectangle"""
 
-"""This defines a Rectangle"""
 
 
 class Rectangle:
-    """Class defining a Rectangle"""
+    """class definds a rectangle"""
 
-    def __init__(self):
-        """Initializing a  class"""
-        pass
+    pass
