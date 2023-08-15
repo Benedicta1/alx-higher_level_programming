@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-returning the JSON representation 
+returning the JSON representation
 '''
 
 import json
