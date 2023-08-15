@@ -14,9 +14,9 @@ def pascal_triangle(n):
     triangle = [[1]]
     for b in range(n - 1):
         line = triangle[-1]
-        aux = [1]
+        ben = [1]
         for b in range(len(line) - 1):
-            aux.append(line[b] + line[b + 1])
-        aux.append(1)
-        triangle.append(aux)
+            ben.append(line[b] + line[b + 1])
+        ben.append(1)
+        triangle.append(ben)
     return triangle
