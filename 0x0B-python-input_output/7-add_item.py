@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-Module that adds args to JSON file
+Adding all arguments to a Python list
 '''
 
 import sys
