@@ -19,7 +19,7 @@ class Student:
             ben = {}
             for a, b in self.__dict__.items():
                 if a in attrs:
-                    ret[a] = b
+                    ben[a] = b
             return ben
         else:
             return self.__dict__
