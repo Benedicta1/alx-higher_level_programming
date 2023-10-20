@@ -1,25 +1,20 @@
 #!/usr/bin/python3
-"""0x0F. Python - Object-relational mapping - Tenth Task
-"""
+""" filter all the states that contains the letter a """
+
+from model_state import Base, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+import sys
 
 if __name__ == '__main__':
-    from sys import argv
-    from sqlalchemy import create_engine
-    from sqlalchemy.orm import Session
-    from model_state import Base, State
-
-    if len(argv) != 4:
-        sys.exit('Use: 9-model_state_filter_a.py <mysql username> '
-                 '<mysql password> <database name>')
-
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/'
-                           '{}'.format(argv[1], argv[2], argv[3]),
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
-
-    session = Session(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
     states = session.query(State).order_by(State.id)
-    states = states.filter(State.name.like('%a%')).all()
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    for i, state in enumerate(states, 1):
+        if 'a' in state.name:
+            print("{:d}: {:s}".format(i, state.name))
     session.close()
