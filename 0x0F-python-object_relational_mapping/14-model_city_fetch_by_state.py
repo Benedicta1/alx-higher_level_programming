@@ -1,38 +1,19 @@
 #!/usr/bin/python3
-"""0x0F. Python - Object-relational mapping -Sixteen Task
-"""
+""" This prints all city objects """
+
+from model_state import Base, State
+from model_city import City
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+import sys
 
 if __name__ == '__main__':
-    from sys import argv, exit
-    from sqlalchemy import create_engine
-    from sqlalchemy.orm import Session
-    from model_state import Base, State
-    from model_city import City
-
-    if len(argv) != 4:
-        exit('Use: 14-model_city_fetch_by_state.py <mysql username> '
-             '<mysql password> <database name>')
-
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/'
-                           '{}'.format(argv[1], argv[2], argv[3]),
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
                            pool_pre_ping=True)
-    session = Session(engine)
-    Base.metadata.create_all(engine)  # creates decprecated warning 1681
-
-    result = session.query(State.name, City.id, City.name).filter(
-        City.state_id == State.id).order_by(City.id).all()
-    for row in result:
-        print('{}: ({}) {}'.format(row[0], row[1], row[2]))
-
+    Base.metadata.create_all(engine)
+    Sessionmaker = sessionmaker(bind=engine)
+    session = Sessionmaker()
+    for ci, st in session.query(City, State).filter(City.state_id == State.id):
+        print("{:s}: ({:d}) {:s}".format(st.name, ci.id, ci.name))
     session.close()
-    """
-    equivalent to:
-    SELECT states.name, cities.id, cities.name FROM cities
-    JOIN states ON cities.state_id = states.id ORDER BY cities.id ASC;
-
-    alternate method:
-    result = session.query(City, State).filter(
-        City.state_id == State.id).order_by(City.id).all()
-    for city, state in result:
-        print('{}: ({}) {}'.format(state.name, city.id, city.name))
-    """
