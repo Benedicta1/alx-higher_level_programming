@@ -2,11 +2,11 @@
 '''
 fetches https://alx-intranet.hbtn.io/status
 '''
-import urllib.request as request
+import urllib.request as reque
 
 if __name__ == '__main__':
-    with request.urlopen('https://intranet.hbtn.io/status') as response:
-        content = response.read()
+    with reque.urlopen('https://alx-intranet.hbtn.io/status') as respo:
+        content = respo.read()
         print("Body response:")
         print("\t- type: {}".format(type(content)))
         print("\t- content: {}".format(content))
