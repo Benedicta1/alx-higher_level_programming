@@ -1,19 +1,18 @@
 #!/usr/bin/python3
-"""Search API
-"""
-
+'''takes in a letter and sends a POST request
+'''
+import requests
+from sys import argv
 if __name__ == "__main__":
-    from requests import post
-    from sys import argv
-
-    q = '' if len(argv) < 2 else argv[1]
-    response = post('http://0.0.0.0:5000/search_user', data={'q': q})
-    try:
-        json_dict = response.json()
-    except ValueError:
-        print('No result' if response.status_code == 204
-              else 'Not a valid JSON')
+    json = {'q': ""}
+    if len(argv) > 1:
+        json['q'] = argv[1]
+    response = requests.post("http://0.0.0.0:5000/search_user", json)
+    if "json" not in response.headers.get('content-type'):
+        print("Not a valid JSON")
     else:
-        print('No result' if len(json_dict) == 0
-              else '[{}] {}'.format(json_dict.get('id'),
-                                    json_dict.get('name')))
+        if response.json():
+            print("[{}] {}".format(response.json().get('id'),
+                  response.json().get('name')))
+        else:
+            print("No result")
