@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-'''
-script that takes in a URL, sends a request to the URL
-'''
-import urllib.request
-from sys import argv
+""" displays the body of the response (decoded in utf-8).
+"""
 
 if __name__ == "__main__":
+    from urllib import request, error
+    from sys import argv
+
     try:
-        with urllib.request.urlopen(argv[1]) as url:
-            print(url.read().decode('utf-8'))
-    except urllib.error.HTTPError as e:
-        error_code = str(e).split(' ')[2][:-1]
-        print("Error code: " + str(error_code))
+        with request.urlopen(argv[1]) as response:
+            html = response.read()
+        print(html.decode(response.headers.get_content_charset()))
+    except error.URLError as err:
+        print('Error code: {}'.format(err.code))
