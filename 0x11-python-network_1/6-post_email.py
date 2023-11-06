@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""request to the passed URL with the email as a parameter
+"""passed URL with the email as a parameter
 """
 
 if __name__ == "__main__":
