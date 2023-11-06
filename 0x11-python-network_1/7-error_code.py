@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" displays the body of the response.
+"""displays the body of the response.
 """
 
 if __name__ == "__main__":
