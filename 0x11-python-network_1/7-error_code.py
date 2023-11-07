@@ -2,14 +2,12 @@
 """displays the body of the response.
 """
 
+import requests
+from sys import argv
 if __name__ == "__main__":
-    from requests import get
-    from sys import argv
-
-    try:
-        response = get(argv[1])
-        response.raise_for_status()
-    except:
-        print('Error code: {}'.format(response.status_code))
+    response = requests.get(argv[1])
+    statusCode = response.status_code
+    if statusCode >= 400:
+        print("Error code: " + str(statusCode))
     else:
         print(response.text)
